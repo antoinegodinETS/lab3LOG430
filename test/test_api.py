@@ -3,16 +3,10 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
 
 import pytest
-from fastapi.testclient import TestClient, init_db
+from fastapi.testclient import TestClient
 from main import app
-from common.database import SessionLocal
+from common.database import SessionLocal, init_db  # Import correct de init_db
 from magasin.models import Magasin, Produit, StockMagasin
-
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
-
-
 from maison_mere.models import Vente
 from logistique.models import DemandeApprovisionnement, StockLogistique
 
@@ -28,7 +22,7 @@ def setup_database():
     session.query(Produit).delete()
     session.commit()
     session.close()
-    init_db()
+    init_db()  # Appel correct à init_db
     yield
     session = SessionLocal()
     session.query(DemandeApprovisionnement).delete()

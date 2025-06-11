@@ -11,7 +11,7 @@ from common.database import SessionLocal
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# app.mount("/static", StaticFiles(directory="static"), name="static")
 
 API_BASE = "http://localhost:8003/api/v1"
 
