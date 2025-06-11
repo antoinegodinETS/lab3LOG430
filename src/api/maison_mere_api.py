@@ -1,17 +1,16 @@
-# src/api/maison_mere_api.py
-
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from common.database import get_db
 from maison_mere import services as mm_services
+from schemas.rapport_schemas import RapportVentes, ChiffreAffaires, Tendance
 
 router = APIRouter(prefix="/api/v1/maison-mere", tags=["Maison Mère"])
 
-@router.get("/rapport-ventes")
+@router.get("/rapport-ventes", response_model=RapportVentes)
 def rapport_ventes(db: Session = Depends(get_db)):
     return mm_services.generer_rapport_ventes()
 
-@router.get("/performances")
+@router.get("/performance")
 def performances(db: Session = Depends(get_db)):
     return mm_services.generer_performances()
 
