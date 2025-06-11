@@ -3,7 +3,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
 
 import pytest
-from fastapi.testclient import TestClient
+from fastapi.testclient import TestClient, init_db
 from main import app
 from common.database import SessionLocal
 from magasin.models import Magasin, Produit, StockMagasin
@@ -12,8 +12,6 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
 
-
-from common.database import SessionLocal, init_db
 
 from maison_mere.models import Vente
 from logistique.models import DemandeApprovisionnement, StockLogistique
@@ -177,7 +175,6 @@ def test_demande_et_validation_approvisionnement():
 
     # Récupérer ID demande
     demandes = client.get("/api/v1/logistique/demandes").json()
-    demande_id = demandes[-1]["id"]
 
     # Validation
     resp_val = client.post("/api/v1/logistique/approvisionner", params={

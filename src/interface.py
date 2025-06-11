@@ -81,8 +81,6 @@ def afficher_demandes(request: Request):
     db.close()
     return templates.TemplateResponse("index.html", {"request": request, "demandes": demandes})
 
-from sqlalchemy.orm import joinedload
-
 @app.post("/valider_demande", response_class=HTMLResponse)
 async def valider_demande(request: Request, demande_id: int = Form(...)):
     db = SessionLocal()
