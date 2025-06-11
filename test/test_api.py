@@ -173,9 +173,6 @@ def test_demande_et_validation_approvisionnement():
     })
     assert resp.status_code == 200
 
-    # Récupérer ID demande
-    demandes = client.get("/api/v1/logistique/demandes").json()
-
     # Validation
     resp_val = client.post("/api/v1/logistique/approvisionner", params={
         "produit_id": produit_id,
