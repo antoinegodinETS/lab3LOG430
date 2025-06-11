@@ -60,7 +60,7 @@ uvicorn interface:app --port 8004 --reload
 │   └── populate_ventes.py       # Génération de données de vente (démo)
 ├── templates/                   # Fichiers HTML (interface utilisateur)
 ├── static/                      # Fichiers CSS, JS, images
-├── tests/                       # Tests (à venir)
+├── tests/                       
 ├── docker-compose.yml
 ├── Dockerfile
 ├── requirements.txt
